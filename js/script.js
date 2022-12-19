@@ -12,16 +12,17 @@ console.log(fillArray(10, "qwerty"));
 //Second task
 
 const arrNew = [0, 1, 2, null, undefined, "qwerty", false];
-function fillterArray(arg) {
+function fillterArray(arg, ...args) {
   let result = [];
   for (let i = 0; i < arg.length; i++) {
-    if (Boolean(arg[i]) === true) {
+    if (Boolean(arg[i]) !== Boolean(args[i])) {
       result.push(arg[i]);
     }
   }
   return result;
 }
-console.log(fillterArray(arrNew));
+result = fillterArray(arrNew, false, undefined, "", 0, null);
+console.log(result);
 
 //Third task
 
@@ -49,9 +50,8 @@ console.log(result);
 
 // Task five
 
-function showMessage(text) {
-  return (name) => `${text} ${name}`;
+function showMessage(text, funkShowText) {
+   funkShowText (text);
 }
-const showText = showMessage("Hello,");
-console.log(showText("Alex"));
-showText(alert("Have a nice day"));
+showMessage('Hello console', console.log);
+showMessage('Hello alert', alert)
